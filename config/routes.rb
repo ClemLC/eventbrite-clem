@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :sessions
+  resources :events
 
   root  'static_pages#home'
 
