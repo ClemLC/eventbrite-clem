@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   resources :sessions
   resources :events
 
-  root  'static_pages#home'
+  get    '/events/:id/join',   to: 'events#join', as: 'join'
 
-  get    '/home',   to: 'static_pages#home'
-  get    '/login',  to: 'sessions#new'
-  post   '/login',  to: 'sessions#create'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  root 'events#index'
+
 end

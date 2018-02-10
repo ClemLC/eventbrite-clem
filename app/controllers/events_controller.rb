@@ -5,12 +5,27 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.creator=current_user
     if @event.save
-      flash.now[:success] = "Hey ! Bienvenu sur Eventbrite by Clem !"
-      redirect_to @event
+      flash.now[:notice] = 'votre événement a bien été créé !'
+      redirect_to event_path(@event)
     else
       render 'new'
     end
+  end
+
+  def show
+   @event = Event.find(params[:id])
+    if logged_in?
+      render 'show'
+    else
+      flash[:danger] = 'Vous devez vous connecter pour accéder à l\'événement'
+      redirect_to login_path
+    end
+  end
+
+  def index
+    @events = Event.all
   end
 
   private

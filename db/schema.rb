@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20180208170325) do
     t.text "description"
     t.datetime "date"
     t.string "place"
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_events_on_creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,13 @@
+<h2>Voici la liste des événements</h2>
+<p>Cliquez sur l'événement pour avoir plus d'informations</p>
+<table class="table table-striped">
+  <tr>
+    <th>Evénements</th>
+  </tr>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%=link_to "#{event.description}", event_path(event) %></td>
+    </tr>
+  <% end %>
+</table>

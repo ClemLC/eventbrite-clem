@@ -1,0 +1,29 @@
+<h2><%= @event.description%></h2>
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Place</th>
+    <th>Créateur</th>
+    <th> </th>
+  </tr>
+    <tr>
+      <td><%= @event.date.strftime("%d-%m-%Y") %></td>
+      <td><%= @event.place %></td>
+      <td><%= @event.creator.name %></td>
+      <td></td>
+    </tr>
+</table>
+
+<%= link_to"Rejoindre l'événement", edit_event_path(@event),class: "btn btn-secondary btn-lg btn-block"%>
+<br><br>
+
+<table class="table table-striped">
+  <tr>
+    <th>Liste des invités</th>
+  </tr>
+  <% @event.attendees.each do |attendees| %>
+    <tr>
+      <td><%=attendees.name%></td>
+    </tr>
+  <% end %>
+</table>
